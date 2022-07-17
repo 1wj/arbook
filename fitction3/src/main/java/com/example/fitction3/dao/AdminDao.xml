@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.fitction3.dao.AdminDao">
+
+    <update id="updateByIdPad">
+        update admin_t set
+         apasswd=#{newpa2},aname=#{aname}
+        where  aid=#{aid}
+    </update>
+
+    <select id="selectByIdPad" resultType="int">
+        select count(*) from admin_t
+        where aid=#{aid} and apasswd=#{oldpa}
+    </select>
+
+    <delete id="deleteById">
+        delete
+        from admin_t
+        where aid=#{aid};
+    </delete>
+
+    <update id="updateById">
+        update admin_t set
+        apasswd=#{apasswd},aname=#{aname},anickname=#{anickname}
+        where  aid=#{aid}
+    </update>
+
+    <insert id="save">
+        insert into admin_t(
+        aid,
+        aname,
+        apasswd,
+        anickname,
+        acreatetime
+        ) values(
+                #{aid},
+                #{aname},
+                #{apasswd},
+                #{anickname},
+                #{acreatetime}
+    )
+    </insert>
+
+    <select id="selectById" resultType="Admint">
+        select   aid,
+                 aname,
+                 apasswd,
+                 anickname,
+                 DATE_FORMAT(acreatetime,'%Y-%m-%d %H:%i:%s') as acreatetime
+        from admin_t
+        where aid=#{aid}
+    </select>
+
+
+    <select id="queryCount" resultType="int">
+        select count(*)
+        from admin_t
+        <where>
+
+            <if test="aid != null and aid !=''">
+                aid like '%' #{aid} '%'
+            </if>
+            <if test="aname != null and aname !=''">
+                and aname like '%' #{aname} '%'
+            </if>
+            <if test="anickname != null and anickname !=''">
+                and anickname like '%' #{anickname} '%'
+            </if>
+        </where>
+    </select>
+
+    <select id="selectList" resultType="Admint">
+        select
+        aid,
+        aname,
+        apasswd,
+        anickname,
+        DATE_FORMAT(acreatetime,'%Y-%m-%d %H:%i:%s') as acreatetime
+        from admin_t
+        <where>
+
+            <if test="aid != null and aid !=''">
+                aid like '%' #{aid} '%'
+            </if>
+            <if test="aname != null and aname !=''">
+                and aname like '%' #{aname} '%'
+            </if>
+            <if test="anickname != null and anickname !=''">
+                and anickname like '%' #{anickname} '%'
+            </if>
+        </where>
+        order by aid desc
+        limit #{num1},#{num2}
+    </select>
+
+
+</mapper>

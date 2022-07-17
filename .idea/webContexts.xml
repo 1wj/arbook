@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/category/category_selectByPage.jsp" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/category/category_toAdd.jsp" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/fiction/chapter_selectByPage.jsp" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/fiction/fictionDetail.jsp" value="file://$PROJECT_DIR$/fiction002/src/main/webapp/fiction" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/fiction/fiction_selectByPage.jsp" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/fiction/fiction_toAdd.jsp" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/fictionUser" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/fictionUser/fictionUser_selectByPage.html" value="file://$PROJECT_DIR$/fiction002/src/main/webapp/fictionUser" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/fictionUser/fictionUser_selectByPage.jsp" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/manager" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/fiction002/src/main/webapp/notice" value="file://$PROJECT_DIR$/fiction002/src/main/webapp" />
+      </map>
+    </option>
+  </component>
+</project>

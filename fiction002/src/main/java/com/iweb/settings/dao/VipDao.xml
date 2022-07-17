@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iweb.settings.dao.VipDao">
+
+    <select id="vipqueryCount" resultType="int">
+        select count(*)
+        from vip_t
+        <where>
+            <if test="vipid != null and vipid !=''">
+                vipid like '%' #{vipid} '%'
+            </if>
+            <if test="startTime != null and startTime !=''">
+                and rechargetime &gt; #{startTime}
+            </if>
+            <if test="endTime != null and endTime !=''">
+                and rechargetime &lt;  #{endTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="vipSelectList" resultType="Vipt">
+        select
+            h.vipid,
+            h.money,
+            h.addday,
+            u.uname as userid,
+            DATE_FORMAT(h.rechargetime,'%Y-%m-%d %H:%i:%s') as rechargetime
+        from vip_t h, user_t u
+        <where>
+            h.userid=u.userid
+            <if test="vipid != null and vipid !=''">
+               and h.vipid like '%' #{vipid} '%'
+            </if>
+            <if test="startTime != null and startTime !=''">
+                and h.rechargetime &gt; #{startTime}
+            </if>
+            <if test="endTime != null and endTime !=''">
+                and h.rechargetime &lt;  #{endTime}
+            </if>
+        </where>
+        order by h.vipid desc
+        limit #{num1},#{num2}
+    </select>
+
+</mapper>

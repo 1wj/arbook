@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iweb.settings.dao.BookDao">
+
+    <delete id="deleteById">
+        delete from book_t where bid=#{bid}
+    </delete>
+
+    <update id="update">
+        update book_t
+        set     bname=#{bname},
+                bproperty=#{bproperty} ,
+                isvip=#{isvip} ,
+                author=#{author} ,
+                status=#{status}
+        where  bid=#{bid}
+    </update>
+
+    <select id="selectById" resultType="Book">
+        select
+               bid,
+               bname,
+               bproperty,
+               author,
+               isvip,
+               page,
+               DATE_FORMAT(bcreatetime,'%Y-%m-%d %H:%i:%s')  bcreatetime,
+               status,
+               DATE_FORMAT(publishtime,'%Y-%m-%d %H:%i:%s')  publishtime
+        from book_t
+        where bid=#{xsid}
+    </select>
+
+    <insert id="save">
+        insert into book_t(
+            bid,
+            bname,
+            bproperty,
+            author,
+            isvip,
+            page,
+            bcreatetime,
+            status,
+            publishtime
+        )
+        values (#{bid},
+                #{bname},
+                #{bproperty},
+                #{author},
+                #{isvip},
+                #{page},
+                #{bcreatetime},
+                #{status},
+                #{publishtime}
+                )
+    </insert>
+
+    <select id="queryCount" resultType="int">
+        select count(*) from book_t
+        <where>
+            <if test="xsid != null and xsid !=''">
+                bid like '%' #{xsid} '%'
+            </if>
+            <if test="xsmc != null and xsmc !=''">
+                and bname like '%' #{xsmc} '%'
+            </if>
+            <if test="xszz != null and xszz !=''">
+                and author like '%' #{xszz} '%'
+            </if>
+        </where>
+    </select>
+
+    <select id="selectList" resultType="Book">
+        select
+            bid,
+            bname,
+            bproperty,
+            author,
+            isvip,
+            page,
+            DATE_FORMAT(bcreatetime,'%Y-%m-%d %H:%i:%s')  bcreatetime ,
+            status,
+            DATE_FORMAT(publishtime,'%Y-%m-%d %H:%i:%s')  publishtime
+
+        from book_t
+
+        <where>
+            <if test="xsid != null and xsid !=''">
+                bid like '%' #{xsid} '%'
+            </if>
+            <if test="xsmc != null and xsmc !=''">
+                and bname like '%' #{xsmc} '%'
+            </if>
+            <if test="xszz != null and xszz !=''">
+                and author like '%' #{xszz} '%'
+            </if>
+        </where>
+        order by bid desc
+        limit #{num1},#{num2}
+    </select>
+
+</mapper>

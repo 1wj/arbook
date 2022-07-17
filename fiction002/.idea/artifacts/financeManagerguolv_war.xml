@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="financeManagerguolv:war">
+    <output-path>$PROJECT_DIR$/../../fhxm/financeManager尝试过滤/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>financeManagerguolv</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="financeManagerguolv-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="financeManagerguolv:war exploded" />
+    </root>
+  </artifact>
+</component>

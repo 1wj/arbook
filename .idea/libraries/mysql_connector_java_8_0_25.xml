@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-8.0.25">
+    <CLASSES>
+      <root url="jar://F:/存放临时的mysql驱动文件/mysql-connector-java-8.0.25.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="fiction002:war exploded">
+    <output-path>$PROJECT_DIR$/fiction002/target/fiction002</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>fiction002</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="fiction002" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.1" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.44" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.taglibs:taglibs-standard-impl:1.2.5" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/fiction002/target/fiction002/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="fiction002/web/Web" />
+    </root>
+  </artifact>
+</component>

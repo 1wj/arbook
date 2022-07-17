@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./css/menu.css" />
+		<script type="text/javascript" src=./jquery-1.11.3.min.js></script>
+		<script type="text/javascript" src="js/menu1.js" ></script>
+	
+	</head>
+	<body>
+		<div class="divmenu">
+			<dl>
+				<dt onclick="menu(this.parentNode)">类别管理</dt>
+				<dd><a href="category/category_toAdd.jsp" target="show">添加类别</a></dd>
+				<dd><a href="category/category_selectByPage.jsp" target="show">查看类别</a></dd>
+			</dl>
+		</div>
+		<div class="divmenu">
+			<dl>
+				<dt onclick="menu(this.parentNode)">小说管理</dt>
+				<dd><a href="fiction/fiction_toAdd.jsp" target="show">添加小说</a></dd>
+				<dd><a href="fiction/fiction_selectByPage.jsp" target="show">查看小说</a></dd>
+			</dl>
+		</div>
+		<div class="divmenu">
+			<dl>
+				<dt onclick="menu(this.parentNode)">用户管理</dt>
+				<dd><a href="fictionUser/fictionUser_selectByPage.jsp" target="show">查看用户</a></dd>
+			</dl>
+		</div>
+		<div class="divmenu">
+			<dl>
+				<dt onclick="menu(this.parentNode)">消息管理</dt>
+				<dd><a href="notice/notice_toAdd.jsp" target="show">发送消息</a></dd>
+				<dd><a href="notice/notice_selectByPage.jsp" target="show">查看消息</a></dd>
+			</dl>
+		</div>
+		<div class="divmenu">
+			<dl>
+				<dt onclick="menu(this.parentNode)">管理员管理</dt>
+				<dd><a href="manager/manager_toAdd.jsp" target="show">添加管理员</a></dd>
+				<dd><a href="manager/manager_selectByPage.jsp" target="show">查看管理员</a></dd>
+				<dd><a href="manager/manager_toUpdate.jsp" target="show">修改密码</a></dd>
+			</dl>
+		</div>
+	</body>
+</html>

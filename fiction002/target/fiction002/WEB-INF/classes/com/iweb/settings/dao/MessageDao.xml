@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iweb.settings.dao.MessageDao">
+
+    <insert id="sendById">
+        insert into message_t(
+            mid,
+            sendtime,
+            message_t,
+            senderid,
+            mtitle
+        )
+        values (
+            #{mid},
+            #{sendtime},
+            #{message_t},
+            #{senderid},
+            #{mtitle}
+               )
+    </insert>
+
+    <!--<select id="selectByIds">
+        select count(*) from message_t in
+        <foreach collection="list" item="c" open="(" close=")" separator=",">
+            #{c.senderid}
+        </foreach>
+    </select>-->
+
+    <select id="selectById" resultType="Messaget">
+        select
+            mid,
+            message_t,
+            aid,
+            mtitle,
+            DATE_FORMAT(sendtime,'%Y-%m-%d %H:%i:%s') as sendtime
+        from message_t
+        where mid=#{mid}
+    </select>
+
+    <delete id="deleteById">
+        delete from message_t where mid=#{mid}
+    </delete>
+
+    <select id="queryCount" resultType="int">
+        select count(*)
+        from message_t m
+        <where>
+            <if test="mid != null and mid !=''">
+               m.mid like '%' #{mid} '%'
+            </if>
+            <if test="mtitle != null and mtitle !=''">
+                and m.mtitle like '%' #{mtitle} '%'
+            </if>
+            <if test="message_t != null and message_t !=''">
+                and m.message_t like '%' #{message_t} '%'
+            </if>
+            <if test="startTime != null and startTime !=''">
+                and m.sendtime &gt; #{startTime}
+            </if>
+            <if test="endTime != null and endTime !=''">
+                and m.sendtime &lt;  #{endTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectList" resultType="Messaget">
+        select
+        m.mid,
+        m.message_t,
+        u.uname as senderid,
+        m.mtitle,
+        DATE_FORMAT(m.sendtime,'%Y-%m-%d %H:%i:%s') as sendtime
+        from message_t m, user_t u
+        <where>
+            m.senderid=u.userid
+            <if test="mid != null and mid !=''">
+                and m.mid like '%' #{mid} '%'
+            </if>
+            <if test="mtitle != null and mtitle !=''">
+                and m.mtitle like '%' #{mtitle} '%'
+            </if>
+            <if test="message_t != null and message_t !=''">
+                and m.message_t like '%' #{message_t} '%'
+            </if>
+            <if test="startTime != null and startTime !=''">
+                and m.sendtime &gt; #{startTime}
+            </if>
+            <if test="endTime != null and endTime !=''">
+                and m.sendtime &lt;  #{endTime}
+            </if>
+        </where>
+        order by m.mid desc
+        limit #{num1},#{num2}
+    </select>
+</mapper>

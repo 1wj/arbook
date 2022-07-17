@@ -1,0 +1,46 @@
+* {
+	margin: 0px;
+}
+
+#top {
+	line-height: 35px;
+	background-image: url(../img/title_bg1.jpg);
+}
+
+#contextbotton {
+	margin: auto;
+}
+
+#contextbotton a {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#tab {
+	width: 90%;
+	margin: auto;
+	margin-top: 30px;
+	border-collapse: collapse;
+}
+
+tr {
+	text-align: center;
+	height: 30px;
+}
+
+textarea {
+	height: 100px;
+	width: 170px;
+}
+
+.desc {
+	text-align: left;
+	padding: 0px 20px;
+	/* 上下偏移量0px,左右偏移量20px,为了使文字不顶格 */
+}
+
+.returnList {
+	position: relative;
+	left: 5%;
+	top: 20px; 
+}

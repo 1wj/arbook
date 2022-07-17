@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iweb.settings.dao.UserDao">
+   <!-- <select id="login" resultType="User">
+        select userid,uname,upwd,unickname,aid,remaindays,tel from user_t where uname=#{uname} and upwd=#{upwd}
+    </select>-->
+
+    <select id="login" resultType="Admint">
+        select
+             aid,
+             aname,
+             apasswd,
+             anickname,
+             DATE_FORMAT(acreatetime,'%Y-%m-%d %H:%i:%s')  acreatetime
+        from admin_t
+        where aname=#{aname} and apasswd=#{apasswd}
+    </select>
+
+    <delete id="collectdeleteById">
+        delete from collect_t where bid=#{collectId} and userid=#{status}
+    </delete>
+
+    <select id="collectqueryCount" resultType="int">
+        select count(*)
+        from collect_t c ,book_t b
+        <where>
+            b.bid=c.bid
+            <if test="xsid != null and xsid !=''">
+                and b.bid like '%' #{xsid} '%'
+            </if>
+            <if test="xsmc != null and xsmc !=''">
+                and b.bname like '%' #{xsmc} '%'
+            </if>
+            <if test="xszz != null and xszz !=''">
+                and b.author like '%' #{xszz} '%'
+            </if>
+        </where>
+    </select>
+
+    <select id="collectSelectList" resultType="Book">
+        select
+        b.bid,
+        b.bname,
+        b.bproperty,
+        b.author,
+        b.page,
+        c.userid as status
+        from collect_t c ,book_t b
+        <where>
+            b.bid=c.bid
+            <if test="xsid != null and xsid !=''">
+                and b.bid like '%' #{xsid} '%'
+            </if>
+            <if test="xsmc != null and xsmc !=''">
+                and b.bname like '%' #{xsmc} '%'
+            </if>
+            <if test="xszz != null and xszz !=''">
+                and b.author like '%' #{xszz} '%'
+            </if>
+        </where>
+        order by b.bid desc
+        limit #{num1},#{num2}
+    </select>
+
+    <delete id="deleteById">
+        delete from user_t where userid=#{userid}
+    </delete>
+
+    <update id="update">
+        update user_t
+        set     unickname=#{unickname},
+                tel=#{tel} ,
+                remaindays=#{remaindays}
+
+        where  userid=#{userid}
+    </update>
+
+    <select id="editById" resultType="User">
+        select *
+        from user_t
+        where userid=#{userid}
+    </select>
+
+
+    <select id="queryCount" resultType="int">
+        select count(*) from user_t
+        <where>
+            <if test="yhid != null and yhid !=''">
+                userid like '%' #{yhid} '%'
+            </if>
+            <if test="yhmc != null and yhmc !=''">
+                and uname like '%' #{yhmc} '%'
+            </if>
+            <if test="yhnc != null and yhnc !=''">
+                and unickname like '%' #{yhnc} '%'
+            </if>
+            <if test="yhsj != null and yhsj !=''">
+                and tel like '%' #{yhsj} '%'
+            </if>
+        </where>
+    </select>
+
+    <select id="selectList" resultType="User">
+        select * from user_t
+        <where>
+            <if test="yhid != null and yhid !=''">
+                userid like '%' #{yhid} '%'
+            </if>
+            <if test="yhmc != null and yhmc !=''">
+                and uname like '%' #{yhmc} '%'
+            </if>
+            <if test="yhnc != null and yhnc !=''">
+                and unickname like '%' #{yhnc} '%'
+            </if>
+            <if test="yhsj != null and yhsj !=''">
+                and tel like '%' #{yhsj} '%'
+            </if>
+        </where>
+        order by userid desc
+        limit #{num1},#{num2}
+    </select>
+
+</mapper>

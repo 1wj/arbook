@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iweb.settings.dao.ClasstDao">
+
+    <delete id="deleteById">
+        delete from class_t where cid=#{cid}
+    </delete>
+
+    <select id="selectById" resultType="Classt">
+        select cid ,cname ,describe_1 ,DATE_FORMAT(ccreatetime,'%Y-%m-%d %H:%i:%s')  ccreatetime
+        from class_t
+        where cid=#{cid}
+    </select>
+
+    <update id="update">
+        update class_t set cname=#{cname},describe_1=#{describe_1} where  cid=#{cid}
+    </update>
+
+    <insert id="save">
+        insert into class_t(cid,cname,describe_1,ccreatetime) values(
+        #{cid},
+        #{cname},
+        #{describe_1},
+        #{ccreatetime}
+        )
+    </insert>
+
+    <select id="queryCount" resultType="int">
+        select count(*) from class_t
+        <where>
+            <if test="lbid != null and lbid !=''">
+                cid like '%' #{lbid} '%'
+            </if>
+            <if test="lbmc != null and lbmc !=''">
+                and cname like '%' #{lbmc} '%'
+            </if>
+            <if test="ms != null and ms !=''">
+                and describe_1 like '%' #{ms} '%'
+            </if>
+        </where>
+    </select>
+
+    <select id="selectList" resultType="Classt">
+        select cid ,cname ,describe_1 ,DATE_FORMAT(ccreatetime,'%Y-%m-%d %H:%i:%s')  ccreatetime
+        from class_t
+        <where>
+            <if test="lbid != null and lbid !=''">
+                 cid like '%' #{lbid} '%'
+            </if>
+            <if test="lbmc != null and lbmc !=''">
+                and cname like '%' #{lbmc} '%'
+            </if>
+            <if test="ms != null and ms !=''">
+                and describe_1 like '%' #{ms} '%'
+            </if>
+        </where>
+        order by cid desc
+        limit #{num1},#{num2}
+
+    </select>
+</mapper>

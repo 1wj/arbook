@@ -1,0 +1,12 @@
+com\iweb\settings\service\impl\UserServiceImpl.class
+com\iweb\settings\domain\User.class
+com\iweb\utils\UUIDUtil.class
+com\iweb\utils\DateTimeUtil.class
+com\iweb\settings\service\UserService.class
+com\iweb\utils\SqlSessionUtil.class
+com\iweb\utils\ServiceFactory.class
+com\iweb\utils\TransactionInvocationHandler.class
+com\iweb\utils\MD5Util.class
+com\iweb\settings\dao\UserDao.class
+com\iweb\settings\controller\UserController.class
+com\iweb\utils\PrintJson.class
